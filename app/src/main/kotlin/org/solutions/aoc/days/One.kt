@@ -4,12 +4,12 @@ import readResource
 
 typealias CalorieReport = Pair<Int, Int>
 
-class CaloriesReport(var maxCalories: Int = 0, var calorieCount: Int = 0, var id: Int = 0) {
+final class CaloriesReport(var maxCalories: Int = 0, var calorieCount: Int = 0, var id: Int = 0) {
         inline fun result(): CalorieReport = this.id to this.maxCalories
 }
 
 inline fun withInput(
-                noinline pred: (String) -> Boolean,
+                crossinline pred: (String) -> Boolean,
                 crossinline onLine: (String) -> Unit,
                 crossinline onNotLine: (String) -> Unit
 ): Unit {
