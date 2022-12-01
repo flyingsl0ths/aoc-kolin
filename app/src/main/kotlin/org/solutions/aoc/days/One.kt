@@ -9,7 +9,7 @@ class CaloriesReport(var maxCalories: Int = 0, var calorieCount: Int = 0, var id
 }
 
 inline fun withInput(
-                crossinline pred: (String) -> Boolean,
+                noinline pred: (String) -> Boolean,
                 crossinline onLine: (String) -> Unit,
                 crossinline onNotLine: (String) -> Unit
 ): Unit {
