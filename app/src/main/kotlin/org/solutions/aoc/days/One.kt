@@ -5,7 +5,7 @@ import readResource
 typealias CalorieReport = Pair<Int, Int>
 
 class CaloriesReport(var maxCalories: Int = 0, var calorieCount: Int = 0, var id: Int = 0) {
-        fun result(): CalorieReport = this.id to this.maxCalories
+        inline fun result(): CalorieReport = this.id to this.maxCalories
 }
 
 inline fun withInput(
