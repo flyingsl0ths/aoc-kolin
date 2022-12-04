@@ -63,8 +63,8 @@ final class DayTwo private constructor() {
                         val shapes = Shape.values()
 
                         val onReadLine = { ctx: Int, line: String ->
-                                val enemyTurn = toShape(ENEMY_ROCK_INDEX, line.get(0), shapes)
-                                val playerTurn = toShape(PLAYER_ROCK_INDEX, line.get(2), shapes)
+                                val enemyTurn = toShape(ENEMY_ROCK_INDEX, line.first(), shapes)
+                                val playerTurn = toShape(PLAYER_ROCK_INDEX, line.last(), shapes)
 
                                 val outcome = (playerTurn and enemyTurn).points
 
@@ -78,7 +78,7 @@ final class DayTwo private constructor() {
                         val shapes = Shape.values()
 
                         val onValidResult = { ctx: Int, line: String ->
-                                val playerChoice = toShape(PLAYER_ROCK_INDEX, line.get(2), shapes)
+                                val playerChoice = toShape(PLAYER_ROCK_INDEX, line.last(), shapes)
 
                                 var outcome =
                                                 when (playerChoice) {
@@ -87,7 +87,7 @@ final class DayTwo private constructor() {
                                                         Shape.SCISSORS -> Outcome.WIN
                                                 }
 
-                                val enemyTurn = toShape(ENEMY_ROCK_INDEX, line.get(0), shapes)
+                                val enemyTurn = toShape(ENEMY_ROCK_INDEX, line.first(), shapes)
 
                                 val playerTurn = (shapes.find { (it and enemyTurn) == outcome })!!
 
