@@ -9,21 +9,22 @@ private final class CaloriesReport(
                 var calorieCount: Int = 0,
                 var id: Int = 0
 ) {
-        fun result(): CalorieReport = this.id to this.maxCalories
+        inline fun result(): CalorieReport = this.id to this.maxCalories
 }
 
 private inline fun <T> withInput(
                 ctx: T,
                 crossinline onLine: (T, String) -> T,
                 crossinline onNotLine: (T, String) -> T
-): T =
-                readResource<DayOne, T>(
-                                "./day/1.txt",
-                                ctx,
-                                { line: String -> line.isEmpty() },
-                                onLine,
-                                onNotLine
-                )
+): T {
+        return readResource<DayOne, T>(
+                        "./day/1.txt",
+                        ctx,
+                        { line: String -> line.isEmpty() },
+                        onLine,
+                        onNotLine
+        )
+}
 
 final class DayOne private constructor() {
         companion object {

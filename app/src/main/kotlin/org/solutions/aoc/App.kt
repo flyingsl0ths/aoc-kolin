@@ -1,11 +1,9 @@
 package org.solutions.aoc
 
-import org.solutions.aoc.days.DayOne
+import org.solutions.aoc.days.DayTwo
 
 fun main() {
-    val (id, calories) = DayOne.one()
-    println("Elf $id: $calories")
+        println("(Assumed) player score: ${DayTwo.one()}")
 
-    val topThreeSum = DayOne.two()
-    println("Top 3 sum: $topThreeSum")
+        println("Actual player score: ${DayTwo.two()}")
 }
