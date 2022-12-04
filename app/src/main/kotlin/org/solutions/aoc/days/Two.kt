@@ -76,16 +76,12 @@ final class DayTwo private constructor() {
 
                 fun two(): Int {
                         val shapes = Shape.values()
+                        val outcomes = Outcome.values()
 
                         val onReadLine = { ctx: Int, line: String ->
                                 val playerChoice = toShape(PLAYER_ROCK_INDEX, line.last(), shapes)
 
-                                var outcome =
-                                                when (playerChoice) {
-                                                        Shape.ROCK -> Outcome.LOSS
-                                                        Shape.PAPER -> Outcome.DRAW
-                                                        Shape.SCISSORS -> Outcome.WIN
-                                                }
+                                val outcome = outcomes[playerChoice.ordinal]
 
                                 val enemyTurn = toShape(ENEMY_ROCK_INDEX, line.first(), shapes)
 
