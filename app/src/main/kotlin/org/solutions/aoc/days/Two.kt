@@ -14,31 +14,28 @@ private enum class Outcome(val points: Int) {
 
 private enum class Shape : Table<Shape, Outcome> {
         ROCK {
-                override infix fun and(rhs: Shape): Outcome {
-                        return when (rhs) {
-                                Shape.PAPER -> Outcome.LOSS
-                                Shape.SCISSORS -> Outcome.WIN
-                                Shape.ROCK -> Outcome.DRAW
-                        }
-                }
+                override infix fun and(rhs: Shape): Outcome =
+                                when (rhs) {
+                                        Shape.PAPER -> Outcome.LOSS
+                                        Shape.SCISSORS -> Outcome.WIN
+                                        Shape.ROCK -> Outcome.DRAW
+                                }
         },
         PAPER {
-                override infix fun and(rhs: Shape): Outcome {
-                        return when (rhs) {
-                                Shape.PAPER -> Outcome.DRAW
-                                Shape.SCISSORS -> Outcome.LOSS
-                                Shape.ROCK -> Outcome.WIN
-                        }
-                }
+                override infix fun and(rhs: Shape): Outcome =
+                                when (rhs) {
+                                        Shape.PAPER -> Outcome.DRAW
+                                        Shape.SCISSORS -> Outcome.LOSS
+                                        Shape.ROCK -> Outcome.WIN
+                                }
         },
         SCISSORS {
-                override infix fun and(rhs: Shape): Outcome {
-                        return when (rhs) {
-                                Shape.PAPER -> Outcome.WIN
-                                Shape.SCISSORS -> Outcome.DRAW
-                                Shape.ROCK -> Outcome.LOSS
-                        }
-                }
+                override infix fun and(rhs: Shape): Outcome =
+                                when (rhs) {
+                                        Shape.PAPER -> Outcome.WIN
+                                        Shape.SCISSORS -> Outcome.DRAW
+                                        Shape.ROCK -> Outcome.LOSS
+                                }
         }
 }
 

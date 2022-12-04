@@ -29,7 +29,7 @@ inline fun <reified T, U> readLines(
 
         var acc = ctx
 
-        file.bufferedReader().use { it.lines().forEach { acc = onReadLine(acc, it) } }
+        file.bufferedReader().use { it.forEachLine { acc = onReadLine(acc, it) } }
 
         return acc
 }
