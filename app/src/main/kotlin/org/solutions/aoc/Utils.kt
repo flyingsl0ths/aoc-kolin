@@ -1,4 +1,6 @@
-inline fun <reified T, U> readResource(
+package org.solutions.aoc
+
+inline fun <reified T, U> readTextResource(
                 path: String,
                 ctx: U,
                 crossinline predicate: (String) -> Boolean,

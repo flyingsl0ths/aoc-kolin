@@ -1,6 +1,6 @@
 package org.solutions.aoc.days
 
-import readResource
+import org.solutions.aoc.readTextResource
 
 typealias CalorieReport = Pair<Int, Int>
 
@@ -17,7 +17,7 @@ private inline fun <T> withInput(
                 crossinline onLine: (T, String) -> T,
                 crossinline onNotLine: (T, String) -> T
 ): T =
-                readResource<DayOne, T>(
+                readTextResource<DayOne, T>(
                                 "./day/1.txt",
                                 ctx,
                                 { line: String -> line.isEmpty() },

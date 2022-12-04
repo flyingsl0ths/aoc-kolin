@@ -1,6 +1,6 @@
 package org.solutions.aoc.days
 
-import readLines
+import org.solutions.aoc.readLines
 
 private interface Table<I, R> {
         infix fun and(rhs: I): R
