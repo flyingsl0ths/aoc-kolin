@@ -77,7 +77,7 @@ final class DayTwo private constructor() {
                 fun two(): Int {
                         val shapes = Shape.values()
 
-                        val onValidResult = { ctx: Int, line: String ->
+                        val onReadLine = { ctx: Int, line: String ->
                                 val playerChoice = toShape(PLAYER_ROCK_INDEX, line.last(), shapes)
 
                                 var outcome =
@@ -93,8 +93,6 @@ final class DayTwo private constructor() {
 
                                 ctx + (playerTurn.ordinal + 1) + outcome.points
                         }
-
-                        val onReadLine = { ctx: Int, line: String -> onValidResult(ctx, line) }
 
                         return withInput(0, onReadLine)
                 }
