@@ -54,43 +54,41 @@ private inline fun <T> withInput(
 private fun toShape(origin: Int, variant: Char, shapes: Array<Shape>): Shape =
                 shapes[difference(origin, variant.code)]
 
-final class DayTwo private constructor() {
-        companion object {
-                const val ENEMY_ROCK_INDEX: Int = 'A'.code
-                const val PLAYER_ROCK_INDEX: Int = 'X'.code
+private const val ENEMY_ROCK_INDEX: Int = 'A'.code
+private const val PLAYER_ROCK_INDEX: Int = 'X'.code
 
-                fun one(): Int {
-                        val shapes = Shape.values()
+final object DayTwo {
+        fun one(): Int {
+                val shapes = Shape.values()
 
-                        val onReadLine = { ctx: Int, line: String ->
-                                val enemyTurn = toShape(ENEMY_ROCK_INDEX, line.first(), shapes)
-                                val playerTurn = toShape(PLAYER_ROCK_INDEX, line.last(), shapes)
+                val onReadLine = { ctx: Int, line: String ->
+                        val enemyTurn = toShape(ENEMY_ROCK_INDEX, line.first(), shapes)
+                        val playerTurn = toShape(PLAYER_ROCK_INDEX, line.last(), shapes)
 
-                                val outcome = (playerTurn and enemyTurn).points
+                        val outcome = (playerTurn and enemyTurn).points
 
-                                ctx + (playerTurn.ordinal + 1) + outcome
-                        }
-
-                        return withInput(0, onReadLine)
+                        ctx + (playerTurn.ordinal + 1) + outcome
                 }
 
-                fun two(): Int {
-                        val shapes = Shape.values()
-                        val outcomes = Outcome.values()
+                return withInput(0, onReadLine)
+        }
 
-                        val onReadLine = { ctx: Int, line: String ->
-                                val playerChoice = toShape(PLAYER_ROCK_INDEX, line.last(), shapes)
+        fun two(): Int {
+                val shapes = Shape.values()
+                val outcomes = Outcome.values()
 
-                                val outcome = outcomes[playerChoice.ordinal]
+                val onReadLine = { ctx: Int, line: String ->
+                        val playerChoice = toShape(PLAYER_ROCK_INDEX, line.last(), shapes)
 
-                                val enemyTurn = toShape(ENEMY_ROCK_INDEX, line.first(), shapes)
+                        val outcome = outcomes[playerChoice.ordinal]
 
-                                val playerTurn = (shapes.find { (it and enemyTurn) == outcome })!!
+                        val enemyTurn = toShape(ENEMY_ROCK_INDEX, line.first(), shapes)
 
-                                ctx + (playerTurn.ordinal + 1) + outcome.points
-                        }
+                        val playerTurn = (shapes.find { (it and enemyTurn) == outcome })!!
 
-                        return withInput(0, onReadLine)
+                        ctx + (playerTurn.ordinal + 1) + outcome.points
                 }
+
+                return withInput(0, onReadLine)
         }
 }

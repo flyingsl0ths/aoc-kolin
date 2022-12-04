@@ -25,42 +25,40 @@ private inline fun <T> withInput(
                                 onNotLine
                 )
 
-final class DayOne private constructor() {
-        companion object {
-                fun one(): CalorieReport {
-                        val onLine = { ctx: CaloriesReport, _: String ->
-                                ctx.id += 1
-                                ctx.maxCalories = Math.max(ctx.maxCalories, ctx.calorieCount)
-                                ctx.calorieCount = 0
-                                ctx
-                        }
-
-                        val acc =
-                                        withInput<CaloriesReport>(CaloriesReport(), onLine) {
-                                                        ctx: CaloriesReport,
-                                                        line: String ->
-                                                ctx.calorieCount += line.toInt()
-                                                ctx
-                                        }
-
-                        return acc.result()
+final object DayOne {
+        fun one(): CalorieReport {
+                val onLine = { ctx: CaloriesReport, _: String ->
+                        ctx.id += 1
+                        ctx.maxCalories = Math.max(ctx.maxCalories, ctx.calorieCount)
+                        ctx.calorieCount = 0
+                        ctx
                 }
 
-                fun two(): Int {
-                        val onLine = { ctx: Pair<MutableList<Int>, Int>, _: String ->
-                                ctx.first.add(ctx.second)
-                                ctx.first to 0
-                        }
+                val acc =
+                                withInput<CaloriesReport>(CaloriesReport(), onLine) {
+                                                ctx: CaloriesReport,
+                                                line: String ->
+                                        ctx.calorieCount += line.toInt()
+                                        ctx
+                                }
 
-                        val (results, _) =
-                                        withInput((mutableListOf<Int>() to 0), onLine) {
-                                                        ctx: Pair<MutableList<Int>, Int>,
-                                                        line: String ->
-                                                ctx.first to (ctx.second + line.toInt())
-                                        }
+                return acc.result()
+        }
 
-                        results.sortDescending()
-                        return results.take(3).sum()
+        fun two(): Int {
+                val onLine = { ctx: Pair<MutableList<Int>, Int>, _: String ->
+                        ctx.first.add(ctx.second)
+                        ctx.first to 0
                 }
+
+                val (results, _) =
+                                withInput((mutableListOf<Int>() to 0), onLine) {
+                                                ctx: Pair<MutableList<Int>, Int>,
+                                                line: String ->
+                                        ctx.first to (ctx.second + line.toInt())
+                                }
+
+                results.sortDescending()
+                return results.take(3).sum()
         }
 }
